@@ -12,9 +12,13 @@ sudo ln -s srn /usr/local/bin/
 
 ## Usage
 
-```
-srn /tmp/file.conf google.dev facebook.dev // replace google.dev with facebook.dev
-// new file created at /tmp/facebook.conf on success
+```bash
+$ srn /tmp/google.conf google facebook // replace google with facebook
+New file created at: tmp/facebook.conf
+
+// or
+$ srn /tmp/google.conf _ facebook // _ indicates basename of file "google" (wihtout ext)
+New file created at: tmp/facebook.conf
 ```
 
 Practicing golang, plus I wanted a tool which can do something similar to this (I know `sed` but still mmm) because I have to repeat and replace text for my nginx vhost config, now I create vhost easily :D

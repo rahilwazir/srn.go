@@ -12,24 +12,29 @@ func main() {
 	args := os.Args[1:]
 
 	if len(args) != 3 {
-		fmt.Println("String replace and new file")
 		fmt.Println("ERROR: Required parameters are missing")
-		fmt.Println("Usage: srn <file> <old_str> <new_str>")
+		fmt.Println("Usage: srn <fileSrc> <oldStr> <newStr>")
 		os.Exit(1)
 	}
 
 	fileSrc := args[0]
-	old_str := args[1]
-	new_str := args[2]
+	oldStr := args[1]
+	newStr := args[2]
 
 	data, err := ioutil.ReadFile(fileSrc)
 
 	errorHandler(err)
 
+	// Searching for the filename (without ext)
+	if oldStr == "_" {
+		oldStr = strings.Replace(filepath.Base(fileSrc), filepath.Ext(fileSrc), "", -1)
+	}
+
+	fmt.Println(oldStr)
 	fileContents := string(data)
-	finalString := strings.Replace(fileContents, old_str, new_str, -1)
+	finalString := strings.Replace(fileContents, oldStr, newStr, -1)
 	basename := filepath.Dir(fileSrc) + string(os.PathSeparator)
-	file := basename + new_str + filepath.Ext(fileSrc)
+	file := basename + newStr + filepath.Ext(fileSrc)
 
 	_err := ioutil.WriteFile(file, []byte(finalString), 0644)
 
