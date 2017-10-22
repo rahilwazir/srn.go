@@ -30,7 +30,6 @@ func main() {
 		oldStr = strings.Replace(filepath.Base(fileSrc), filepath.Ext(fileSrc), "", -1)
 	}
 
-	fmt.Println(oldStr)
 	fileContents := string(data)
 	finalString := strings.Replace(fileContents, oldStr, newStr, -1)
 	basename := filepath.Dir(fileSrc) + string(os.PathSeparator)
