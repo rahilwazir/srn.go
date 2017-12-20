@@ -3,21 +3,26 @@ Create new file with replaced strings
 
 ## Installation
 
-```
-git clone https://github.com/rahilwazir/srn.go.git
-cd srn.go
-go build srn.go
-sudo ln -s srn /usr/local/bin/
+```bash
+> git clone https://github.com/rahilwazir/srn.go.git
+> cd srn.go
+> go build srn.go
+> sudo ln -s srn /usr/local/bin/
 ```
 
 ## Usage
 
-```bash
-$ srn /tmp/google.conf google facebook // replace google with facebook
-New file created at: tmp/facebook.conf
+Replace keyword `google` with `facebook`
 
-// or
-$ srn /tmp/google.conf _ facebook // _ indicates basename of file "google" (wihtout ext)
+```bash
+> srn /tmp/google.conf google facebook
+New file created at: tmp/facebook.conf
+```
+
+Or you can skip second parameter by adding `_`, which indicates the basename `google` of file `google.conf`
+
+```bash
+> srn /tmp/google.conf _ facebook
 New file created at: tmp/facebook.conf
 ```
 
